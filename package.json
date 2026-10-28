@@ -1,0 +1,61 @@
+{
+  "name": "antrejeu-back",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/Fafacraft/AntreJeu-back#readme",
+  "bugs": {
+    "url": "https://github.com/Fafacraft/AntreJeu-back/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fafacraft/AntreJeu-back.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./dist/server.js",
+    "dev": "tsx --watch ./src/server.js",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "check": "npm run lint && npm run format:check && npm run test:run",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.5",
+    "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10",
+    "supertest": "^7.3.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
