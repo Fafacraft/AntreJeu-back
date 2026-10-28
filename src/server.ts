@@ -1,6 +1,12 @@
 import app from './app.js';
+import dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 3000;
+dotenv.config();
+
+if (!process.env.BACKEND_PORT) {
+  throw new Error('Missing env variable : BACKEND_PORT');
+}
+const PORT = process.env.BACKEND_PORT;
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
