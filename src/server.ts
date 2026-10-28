@@ -1,7 +1,7 @@
-import app from './app.js';
 import dotenv from 'dotenv';
-
 dotenv.config();
+
+const { default: app } = await import('./app.js');
 
 if (!process.env.BACKEND_PORT) {
   throw new Error('Missing env variable : BACKEND_PORT');
