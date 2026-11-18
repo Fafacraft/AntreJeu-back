@@ -13,6 +13,30 @@ jobs:
   quality:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: antrejeu_test
+          MYSQL_USER: antrejeu
+          MYSQL_PASSWORD: test_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      NODE_ENV: test
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_NAME: antrejeu_test
+      DB_USER: antrejeu
+      DB_PASSWORD: test_password
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -34,6 +58,9 @@ jobs:
 
       - name: Type check
         run: npm run typecheck
+
+      - name: Run database migrations
+        run: npm run db:migrate
 
       - name: Run tests with coverage
         run: npm run test:coverage
