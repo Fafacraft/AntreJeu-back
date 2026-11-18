@@ -29,6 +29,11 @@ const db = knex({
     min: 0,
     max: 10,
   },
+  migrations: {
+    directory: './src/migrations',
+    extension: 'ts',
+    loadExtensions: ['.ts'],
+  },
 });
 
 export default db;
