@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-const { default: db } = await import('./db.ts');
+const { default: db } = await import('./db.js');
 
 try {
   const [batch, migrations] = await db.migrate.latest({
